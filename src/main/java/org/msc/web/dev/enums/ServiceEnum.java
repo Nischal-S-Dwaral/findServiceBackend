@@ -6,7 +6,8 @@ package org.msc.web.dev.enums;
 public enum ServiceEnum {
   CUSTOMER("customer"),
   ADMIN("admin"),
-  SERVICE_PROVIDER("serviceProvider");
+  SERVICE_PROVIDER("serviceProvider"),
+  REVIEW("review");
 
   private final String name;
 

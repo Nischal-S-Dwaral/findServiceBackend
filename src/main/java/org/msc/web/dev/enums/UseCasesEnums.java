@@ -8,7 +8,9 @@ public enum UseCasesEnums {
     CREATE("create"),
     FIND_BY_ID("findById"),
     UPDATE_STATUS("updateStatus"),
-    DELETE("delete");
+    DELETE("delete"),
+    ADD("add"),
+    GET_REVIEW_LIST("getReviewList");
     private final String useCaseName;
     private static final Map<String, UseCasesEnums> stringUseCasesEnumsMap = new HashMap<>();
 

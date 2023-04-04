@@ -1,15 +1,14 @@
-package org.msc.web.dev.service.impl.serviceprovider;
+package org.msc.web.dev.service.impl.review;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.WriteResult;
-import lombok.extern.slf4j.Slf4j;
-import org.msc.web.dev.constants.ServiceProviderConstants;
+import org.msc.web.dev.constants.ReviewConstants;
 import org.msc.web.dev.enums.ServiceEnum;
 import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.BadRequest;
 import org.msc.web.dev.exceptions.InternalServerError;
-import org.msc.web.dev.model.serviceprovider.delete.DeleteServiceProviderResponse;
-import org.msc.web.dev.repository.ServiceProviderRepository;
+import org.msc.web.dev.model.review.delete.DeleteReviewResponse;
+import org.msc.web.dev.repository.ReviewRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.msc.web.dev.utils.CommonUtils;
@@ -19,44 +18,44 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
-@Slf4j
-public class DeleteServiceProviderImpl implements IUseCaseImplementation<
-        String, WriteResult, DeleteServiceProviderResponse> {
+public class DeleteReviewImpl implements IUseCaseImplementation<
+        String, WriteResult, DeleteReviewResponse> {
 
     @Autowired
-    private ServiceProviderRepository serviceProviderRepository;
+    private ReviewRepository reviewRepository;
 
     @PostConstruct
     public void initProp() {
         UseCasesAdaptorFactory.
-                registerAdaptor(ServiceEnum.SERVICE_PROVIDER, UseCasesEnums.DELETE, this);
+                registerAdaptor(ServiceEnum.REVIEW, UseCasesEnums.DELETE, this);
     }
 
     @Override
     public String preProcess(HttpServletRequest request) {
         Map<String, String> queryParams = RequestUtil.getQueryParams(request);
-        if (!CommonUtils.checkIfObjectIsNotNull(queryParams.get(ServiceProviderConstants.HEADER_ID))) {
+        if (!CommonUtils.checkIfObjectIsNotNull(queryParams.get(ReviewConstants.REVIEW_ID_HEADER))) {
             throw new BadRequest("ID is required get find");
         }
-        return queryParams.get(ServiceProviderConstants.HEADER_ID);
+        return queryParams.get(ReviewConstants.REVIEW_ID_HEADER);
     }
 
     @Override
-    public WriteResult process(String id) {
+    public WriteResult process(String reviewId) {
         try {
-            ApiFuture<WriteResult> writeResultApiFuture = serviceProviderRepository.delete(id);
+            ApiFuture<WriteResult> writeResultApiFuture = reviewRepository.delete(reviewId);
             return writeResultApiFuture.get();
         } catch (ExecutionException | InterruptedException exception) {
-            throw new InternalServerError("Failed to delete Service Provider from FireBase "+exception.getMessage());
+            throw new InternalServerError("Failed to delete Review from FireBase "+exception.getMessage());
         }
     }
 
     @Override
-    public DeleteServiceProviderResponse postProcess(WriteResult writeResult) {
-        return new DeleteServiceProviderResponse(writeResult.getUpdateTime());
+    public DeleteReviewResponse postProcess(WriteResult writeResult) {
+        return new DeleteReviewResponse(writeResult.getUpdateTime());
     }
 }
