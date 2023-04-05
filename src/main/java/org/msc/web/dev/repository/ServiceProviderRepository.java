@@ -16,7 +16,7 @@ public class ServiceProviderRepository {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
         DocumentReference documentReference = databaseReference.document();
-        documentReference.set(documentReference.getId());
+        serviceProvider.setId(documentReference.getId());
         return documentReference.create(serviceProvider);
     }
 

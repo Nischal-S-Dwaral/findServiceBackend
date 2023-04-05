@@ -4,8 +4,7 @@ package org.msc.web.dev.enums;
  * @author : Nischal SD
  **/
 public enum ServiceEnum {
-  CUSTOMER("customer"),
-  ADMIN("admin"),
+  SERVICE("service"),
   SERVICE_PROVIDER("serviceProvider"),
   REVIEW("review");
 
