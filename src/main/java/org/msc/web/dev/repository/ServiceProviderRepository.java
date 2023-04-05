@@ -1,10 +1,7 @@
 package org.msc.web.dev.repository;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.msc.web.dev.constants.Constants;
 import org.msc.web.dev.model.collections.ServiceProvider;
@@ -18,7 +15,9 @@ public class ServiceProviderRepository {
     public ApiFuture<WriteResult> create(ServiceProvider serviceProvider) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
-        return databaseReference.document().create(serviceProvider);
+        DocumentReference documentReference = databaseReference.document();
+        documentReference.set(documentReference.getId());
+        return documentReference.create(serviceProvider);
     }
 
     public ApiFuture<DocumentSnapshot> findById(String id) {
