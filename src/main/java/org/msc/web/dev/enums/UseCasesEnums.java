@@ -10,7 +10,8 @@ public enum UseCasesEnums {
     UPDATE_STATUS("updateStatus"),
     DELETE("delete"),
     ADD("add"),
-    GET_REVIEW_LIST("getReviewList");
+    GET_REVIEW_LIST("getReviewList"),
+    GET_SERVICE_LIST("getServiceList");
     private final String useCaseName;
     private static final Map<String, UseCasesEnums> stringUseCasesEnumsMap = new HashMap<>();
 

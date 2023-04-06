@@ -23,11 +23,17 @@ public class ServiceRepository {
         return documentReference.create(service);
     }
 
+    public ApiFuture<DocumentSnapshot> findById(String id) {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_COLLECTION);
+        return databaseReference.document(id).get();
+    }
+
     public ApiFuture<WriteResult> updateTotalReviewOnAdd(String serviceId, String rating) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_COLLECTION);
         try {
-            ApiFuture<DocumentSnapshot>  documentSnapshotApiFuture = databaseReference.document(serviceId).get();
+            ApiFuture<DocumentSnapshot>  documentSnapshotApiFuture = findById(serviceId);
             Map<String, Object> documentMap = documentSnapshotApiFuture.get().getData();
 
             Service service = JsonUtil.toObject(documentMap, Service.class);
@@ -54,7 +60,7 @@ public class ServiceRepository {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_COLLECTION);
         try {
-            ApiFuture<DocumentSnapshot>  documentSnapshotApiFuture = databaseReference.document(serviceId).get();
+            ApiFuture<DocumentSnapshot>  documentSnapshotApiFuture = findById(serviceId);
             Map<String, Object> documentMap = documentSnapshotApiFuture.get().getData();
 
             Service service = JsonUtil.toObject(documentMap, Service.class);
@@ -75,5 +81,19 @@ public class ServiceRepository {
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Error while updating the review total: "+exception.getMessage());
         }
+    }
+
+    public ApiFuture<QuerySnapshot> getAllServiceList() {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_COLLECTION);
+        return databaseReference.get();
+    }
+
+    public ApiFuture<QuerySnapshot> getServiceListFromCategory(String category) {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_COLLECTION);
+        return databaseReference
+                .whereGreaterThanOrEqualTo("category", category)
+                .whereLessThanOrEqualTo("category", category).get();
     }
 }
