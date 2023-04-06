@@ -9,4 +9,5 @@ public class Constants {
     public static final String SERVICE_PROVIDER_COLLECTION = "serviceproviders";
     public static final String REVIEW_COLLECTION = "reviews";
     public static final String SERVICE_COLLECTION = "services";
+    public static final String SERVICE_REQUEST_COLLECTION = "servicesRequests";
 }
