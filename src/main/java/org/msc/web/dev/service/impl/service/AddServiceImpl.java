@@ -114,6 +114,10 @@ public class AddServiceImpl implements IUseCaseImplementation<AddServiceRequest,
                         service.setDescription(parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_DESCRIPTION)[0]);
                         break;
                     }
+                    case ServiceConstants.MULTIPART_PARAMETER_KEY_NAME: {
+                        service.setName(parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_NAME)[0]);
+                        break;
+                    }
                 }
             } else {
                 missingParameters.add(entry.getKey());

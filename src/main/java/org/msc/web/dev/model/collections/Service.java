@@ -8,6 +8,7 @@ import java.util.List;
 public class Service {
 
     private String id;
+    private String name;
     private String serviceProviderId;
     private String location;
     private String description;
