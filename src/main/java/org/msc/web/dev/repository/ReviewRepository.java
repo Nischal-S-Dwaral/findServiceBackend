@@ -28,6 +28,12 @@ public class ReviewRepository {
         return databaseReference.whereEqualTo("serviceId", serviceId).get();
     }
 
+    public ApiFuture<DocumentSnapshot> findById(String id) {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference  = firestore.collection(Constants.REVIEW_COLLECTION);
+        return databaseReference.document(id).get();
+    }
+
     public ApiFuture<WriteResult> delete(String id) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.REVIEW_COLLECTION);

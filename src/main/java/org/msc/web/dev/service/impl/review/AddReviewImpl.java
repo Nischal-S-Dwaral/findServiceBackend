@@ -7,9 +7,11 @@ import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.BadRequest;
 import org.msc.web.dev.exceptions.InternalServerError;
 import org.msc.web.dev.model.collections.Review;
+import org.msc.web.dev.model.review.add.AddReviewData;
 import org.msc.web.dev.model.review.add.AddReviewRequest;
 import org.msc.web.dev.model.review.add.AddReviewResponse;
 import org.msc.web.dev.repository.ReviewRepository;
+import org.msc.web.dev.repository.ServiceRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.msc.web.dev.utils.CommonUtils;
@@ -22,10 +24,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, WriteResult, AddReviewResponse> {
+public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, AddReviewData, AddReviewResponse> {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private ServiceRepository serviceRepository;
 
     @PostConstruct
     public void init() {
@@ -45,7 +50,7 @@ public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, W
     }
 
     @Override
-    public WriteResult process(AddReviewRequest addReviewRequest) {
+    public AddReviewData process(AddReviewRequest addReviewRequest) {
 
         Review review = new Review();
         review.setServiceId(addReviewRequest.getServiceId());
@@ -55,15 +60,19 @@ public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, W
         review.setComment(addReviewRequest.getComment());
 
         try {
-            ApiFuture<WriteResult> data = reviewRepository.add(review);
-            return data.get();
+            ApiFuture<WriteResult> reviewData = reviewRepository.add(review);
+            ApiFuture<WriteResult> updateServiceData =
+                    serviceRepository.updateTotalReviewOnAdd(review.getServiceId(), review.getRating());
+            return new AddReviewData(reviewData.get(), updateServiceData.get());
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to save Review in FireBase "+exception.getMessage());
         }
     }
 
     @Override
-    public AddReviewResponse postProcess(WriteResult documentReference) {
-        return new AddReviewResponse(documentReference.getUpdateTime());
+    public AddReviewResponse postProcess(AddReviewData addReviewData) {
+        return new AddReviewResponse(
+                addReviewData.getReviewData().getUpdateTime(),
+                addReviewData.getUpdateServiceData().getUpdateTime());
     }
 }

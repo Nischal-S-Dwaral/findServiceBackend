@@ -14,5 +14,6 @@ import org.msc.web.dev.model.RestApiResponse;
 @AllArgsConstructor
 public class AddReviewResponse extends RestApiResponse {
 
-    private Timestamp timestamp;
+    private Timestamp reviewAddTimestamp;
+    private Timestamp serviceUpdateTimestamp;
 }

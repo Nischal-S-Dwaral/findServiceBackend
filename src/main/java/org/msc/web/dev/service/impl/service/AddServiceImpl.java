@@ -68,6 +68,8 @@ public class AddServiceImpl implements IUseCaseImplementation<AddServiceRequest,
             org.msc.web.dev.model.collections.Service service = generateServiceFromParameterMap(addServiceRequest.getParameterMap());
             service.setPhotos(photos);
             service.setCreatedAt(String.valueOf(new Timestamp(System.currentTimeMillis())));
+            service.setNumberOfRatings(String.valueOf(0));
+            service.setTotalRating(String.valueOf(0f));
 
             ApiFuture<WriteResult> data = serviceRepository.create(service);
             return data.get();

@@ -17,4 +17,6 @@ public class Service {
     private String createdAt;
     private String updatedAt;
     private List<String> photos;
+    private String totalRating;
+    private String numberOfRatings;
 }

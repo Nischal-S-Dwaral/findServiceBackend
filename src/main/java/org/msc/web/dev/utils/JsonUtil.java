@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.MapType;
 import org.msc.web.dev.exceptions.JsonException;
+import org.msc.web.dev.model.collections.Service;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -77,5 +78,9 @@ public class JsonUtil {
     } catch (IOException e) {
       throw new JsonException(e.getMessage());
     }
+  }
+
+  public static Map<String, Object> toMap(Service service) {
+    return mObjectMapper.convertValue(service, Map.class);
   }
 }
