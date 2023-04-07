@@ -8,4 +8,5 @@ public class ServiceRequestConstants {
     public static final String HEADER_SERVICE_PROVIDER_ID = "serviceProviderId";
     public static final String HEADER_SERVICE_ID = "serviceId";
     public static final String FIELD_STATUS = "status";
+    public static final String HEADER_SERVICE_REQUEST_ID = "serviceRequestId";
 }
