@@ -17,6 +17,7 @@ import java.util.Objects;
 public class RestApiController {
 
     @PostMapping("/api/{serviceCode}/{useCase}")
+    @CrossOrigin("*")
     public <T extends RestApiResponse> T post(
             @PathVariable("serviceCode") String serviceCode,
             @PathVariable("useCase") String useCase,
@@ -28,6 +29,7 @@ public class RestApiController {
     }
 
     @GetMapping("/api/{serviceCode}/{useCase}")
+    @CrossOrigin("*")
     public <T extends RestApiResponse> T get(
             @PathVariable("serviceCode") String serviceCode,
             @PathVariable("useCase") String useCase,
@@ -39,6 +41,7 @@ public class RestApiController {
     }
 
     @DeleteMapping("/api/{serviceCode}/{useCase}")
+    @CrossOrigin("*")
     public <T extends RestApiResponse> T delete(
             @PathVariable("serviceCode") String serviceCode,
             @PathVariable("useCase") String useCase,

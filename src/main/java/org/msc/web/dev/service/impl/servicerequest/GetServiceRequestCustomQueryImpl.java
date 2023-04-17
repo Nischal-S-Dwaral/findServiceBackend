@@ -37,7 +37,7 @@ public class GetServiceRequestCustomQueryImpl implements IUseCaseImplementation<
     @PostConstruct
     public void initProp() {
         UseCasesAdaptorFactory.
-                registerAdaptor(ServiceEnum.SERVICE_REQUEST, UseCasesEnums.GET_SERVICE_PROVIDER_LIST, this);
+                registerAdaptor(ServiceEnum.SERVICE_REQUEST, UseCasesEnums.GET_SERVICE_REQUEST_LIST, this);
     }
 
     @Override
