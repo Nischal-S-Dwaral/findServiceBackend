@@ -1,15 +1,15 @@
-package org.msc.web.dev.service.impl.service;
+package org.msc.web.dev.service.impl.serviceprovider;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
-import lombok.extern.slf4j.Slf4j;
-import org.msc.web.dev.constants.ServiceConstants;
+import org.msc.web.dev.constants.ServiceProviderConstants;
 import org.msc.web.dev.enums.ServiceEnum;
 import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.InternalServerError;
-import org.msc.web.dev.model.service.get.GetServiceListByServiceProviderResponse;
-import org.msc.web.dev.repository.ServiceRepository;
+import org.msc.web.dev.model.collections.ServiceProvider;
+import org.msc.web.dev.model.serviceprovider.get.GetServiceProviderListByStatusResponse;
+import org.msc.web.dev.repository.ServiceProviderRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.msc.web.dev.utils.RequestUtil;
@@ -25,40 +25,39 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
-public class GetServiceListByServiceProviderImpl implements IUseCaseImplementation<
-        String, List<org.msc.web.dev.model.collections.Service>, GetServiceListByServiceProviderResponse> {
+public class GetServiceProviderListByStatusImpl implements IUseCaseImplementation<
+        String, List<ServiceProvider>, GetServiceProviderListByStatusResponse> {
 
     @Autowired
-    private ServiceRepository serviceRepository;
+    private ServiceProviderRepository repository;
 
     @PostConstruct
     public void initProp() {
         UseCasesAdaptorFactory.
-                registerAdaptor(ServiceEnum.SERVICE, UseCasesEnums.GET_SERVICE_LIST_BY_SERVICE_PROVIDER, this);
+                registerAdaptor(ServiceEnum.SERVICE_PROVIDER, UseCasesEnums.GET_SERVICE_PROVIDER_LIST, this);
     }
 
     @Override
     public String preProcess(HttpServletRequest request) throws IOException {
         Map<String, String> queryParams = RequestUtil.getQueryParams(request);
-        return queryParams.get(ServiceConstants.HEADER_SERVICE_PROVIDER_ID);
+        return queryParams.get(ServiceProviderConstants.HEADER_APPROVAL_STATUS);
     }
 
     @Override
-    public List<org.msc.web.dev.model.collections.Service> process(String serviceProviderId) {
+    public List<ServiceProvider> process(String status) {
         try {
-            ApiFuture<QuerySnapshot> querySnapshotApiFuture = serviceRepository.getByServiceProvider(serviceProviderId);
+            ApiFuture<QuerySnapshot> querySnapshotApiFuture = repository.getServiceProviderListByStatus(status);
             List<QueryDocumentSnapshot> queryDocumentSnapshotList = querySnapshotApiFuture.get().getDocuments();
             return queryDocumentSnapshotList.stream()
-                    .map(d -> d.toObject(org.msc.web.dev.model.collections.Service.class))
+                    .map(d -> d.toObject(ServiceProvider.class))
                     .collect(Collectors.toList());
         } catch (ExecutionException | InterruptedException exception) {
-            throw new InternalServerError("Failed to get Service List from FireBase "+exception.getMessage());
+            throw new InternalServerError("Failed to get Service Provider List from FireBase "+exception.getMessage());
         }
     }
 
     @Override
-    public GetServiceListByServiceProviderResponse postProcess(List<org.msc.web.dev.model.collections.Service> services) {
-        return new GetServiceListByServiceProviderResponse(services);
+    public GetServiceProviderListByStatusResponse postProcess(List<ServiceProvider> serviceProviders) {
+        return new GetServiceProviderListByStatusResponse(serviceProviders);
     }
 }

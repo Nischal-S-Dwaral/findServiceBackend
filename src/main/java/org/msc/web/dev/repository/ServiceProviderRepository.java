@@ -37,4 +37,12 @@ public class ServiceProviderRepository {
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
         return databaseReference.document(id).delete();
     }
+
+    public ApiFuture<QuerySnapshot> getServiceProviderListByStatus(String status) {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
+        return databaseReference
+                .whereGreaterThanOrEqualTo("approvalStatus", status)
+                .whereLessThanOrEqualTo("approvalStatus", status).get();
+    }
 }

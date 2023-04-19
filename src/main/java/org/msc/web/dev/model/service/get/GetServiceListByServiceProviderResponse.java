@@ -1,4 +1,4 @@
-package org.msc.web.dev.model.serviceprovider.get;
+package org.msc.web.dev.model.service.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
