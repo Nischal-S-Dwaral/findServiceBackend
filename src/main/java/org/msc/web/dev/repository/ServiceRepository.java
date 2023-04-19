@@ -145,4 +145,10 @@ public class ServiceRepository {
             throw new InternalServerError("Error while deleting the services: "+exception.getMessage());
         }
     }
+
+    public ApiFuture<QuerySnapshot> getByServiceProvider(String serviceProviderId) {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_COLLECTION);
+        return databaseReference.whereEqualTo(ServiceConstants.HEADER_SERVICE_PROVIDER_ID, serviceProviderId).get();
+    }
 }
