@@ -54,8 +54,7 @@ public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, A
 
         Review review = new Review();
         review.setServiceId(addReviewRequest.getServiceId());
-        //TODO: To get the customer name from Customer Collection
-        review.setCustomerName("Name - "+addReviewRequest.getCustomerId());
+        review.setCustomerName(addReviewRequest.getCustomerName());
         review.setRating(addReviewRequest.getRating());
         review.setComment(addReviewRequest.getComment());
 

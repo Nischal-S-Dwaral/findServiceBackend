@@ -7,7 +7,8 @@ import org.msc.web.dev.constants.Constants;
 import org.msc.web.dev.model.collections.CommentsServiceRequest;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class CommentsServiceRequestRepository {
@@ -17,7 +18,8 @@ public class CommentsServiceRequestRepository {
         CollectionReference databaseReference  = firestore.collection(Constants.COMMENTS_SERVICE_REQUEST_COLLECTION);
         DocumentReference documentReference = databaseReference.document();
         commentsServiceRequest.setId(documentReference.getId());
-        commentsServiceRequest.setTimestamp(String.valueOf(new Timestamp(System.currentTimeMillis())));
+        commentsServiceRequest.setTimestamp(LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
         return documentReference.create(commentsServiceRequest);
     }
 

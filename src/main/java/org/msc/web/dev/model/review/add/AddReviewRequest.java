@@ -6,7 +6,7 @@ import lombok.Data;
 public class AddReviewRequest {
 
     private String serviceId;
-    private String customerId;
+    private String customerName;
     private String rating;
     private String comment;
 }
