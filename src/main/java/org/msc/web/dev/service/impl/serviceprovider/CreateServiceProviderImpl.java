@@ -64,7 +64,6 @@ public class CreateServiceProviderImpl implements IUseCaseImplementation<
         serviceProvider.setName(request.getName());
         serviceProvider.setDescription(request.getDescription());
         serviceProvider.setId(request.getId());
-        System.out.println(request.getId());
         serviceProvider.setApprovalStatus(ServiceProviderConstants.INITIAL_SERVICE_PROVIDER_REQUEST);
 
         try {

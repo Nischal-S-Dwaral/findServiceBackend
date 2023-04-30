@@ -55,7 +55,6 @@ public class FindServiceProviderBySPidImpl implements IUseCaseImplementation<
     public ServiceProvider process(String id) {
         try {
             ApiFuture<QuerySnapshot> querySnapshotApiFuture = serviceProviderRepository.findBySPid(id);
-            //List<QueryDocumentSnapshot> queryDocumentSnapshot = querySnapshotApiFuture.get().getDocuments();
             return querySnapshotApiFuture.get().getDocuments().get(0).toObject(ServiceProvider.class);
         } catch (ExecutionException|InterruptedException exception) {
             throw new InternalServerError("Failed to get Service Provider from FireBase "+exception.getMessage());

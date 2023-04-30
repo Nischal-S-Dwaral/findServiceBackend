@@ -4,6 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.msc.web.dev.constants.Constants;
+import org.msc.web.dev.exceptions.InternalServerError;
 import org.msc.web.dev.model.collections.ServiceProvider;
 import org.springframework.stereotype.Component;
 
@@ -28,13 +29,27 @@ public class ServiceProviderRepository {
     public ApiFuture<WriteResult> updateStatus(String id, Map<String, Object> fieldMap) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
-        return databaseReference.document(id).update(fieldMap);
+
+        try {
+            ApiFuture<QuerySnapshot> apiFuture = databaseReference.whereEqualTo("id", id).get();
+            String documentId = apiFuture.get().getDocuments().get(0).getId();
+            return databaseReference.document(documentId).update(fieldMap);
+        } catch (Exception exception) {
+            throw new InternalServerError(exception.getMessage());
+        }
     }
 
     public ApiFuture<WriteResult> delete(String id) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
-        return databaseReference.document(id).delete();
+
+        try {
+            ApiFuture<QuerySnapshot> apiFuture = databaseReference.whereEqualTo("id", id).get();
+            String documentId = apiFuture.get().getDocuments().get(0).getId();
+            return databaseReference.document(documentId).delete();
+        } catch (Exception exception) {
+            throw new InternalServerError(exception.getMessage());
+        }
     }
 
     public ApiFuture<QuerySnapshot> getServiceProviderListByStatus(String status) {
