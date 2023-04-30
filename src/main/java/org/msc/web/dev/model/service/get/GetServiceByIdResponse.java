@@ -26,7 +26,7 @@ public class GetServiceByIdResponse extends RestApiResponse {
     private List<String> photos;
     private String totalRating;
     private String numberOfRatings;
-    private String title;
+    private String name;
 
     public GetServiceByIdResponse(Service service) {
         this.id = service.getId();
@@ -39,6 +39,6 @@ public class GetServiceByIdResponse extends RestApiResponse {
         this.photos = service.getPhotos();
         this.totalRating = service.getTotalRating();
         this.numberOfRatings = service.getNumberOfRatings();
-        this.title = service.getName();
+        this.name = service.getName();
     }
 }
