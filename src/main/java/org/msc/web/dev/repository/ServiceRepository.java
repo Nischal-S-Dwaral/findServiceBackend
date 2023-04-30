@@ -116,7 +116,6 @@ public class ServiceRepository {
             service.setDescription(updateServiceRequest.getDescription());
             service.setPrice(updateServiceRequest.getPrice());
             service.setAvailability(updateServiceRequest.getAvailability());
-            service.setPhotos(updateServiceRequest.getPhotos());
             service.setUpdatedAt(String.valueOf(new Timestamp(System.currentTimeMillis())));
 
             return databaseReference.document(updateServiceRequest.getServiceId()).update(JsonUtil.toMap(service));

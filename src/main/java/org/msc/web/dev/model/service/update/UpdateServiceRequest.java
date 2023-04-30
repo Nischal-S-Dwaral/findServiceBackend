@@ -12,5 +12,4 @@ public class UpdateServiceRequest {
     private String description;
     private String price;
     private String availability;
-    private List<String> photos;
 }
