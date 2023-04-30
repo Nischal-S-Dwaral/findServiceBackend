@@ -46,7 +46,8 @@ public class GetServiceProviderListByStatusImpl implements IUseCaseImplementatio
     @Override
     public List<ServiceProvider> process(String status) {
         try {
-            ApiFuture<QuerySnapshot> querySnapshotApiFuture = repository.getServiceProviderListByStatus(status);
+            String formattedStatus = status.replaceAll("%20", " ");
+            ApiFuture<QuerySnapshot> querySnapshotApiFuture = repository.getServiceProviderListByStatus(formattedStatus);
             List<QueryDocumentSnapshot> queryDocumentSnapshotList = querySnapshotApiFuture.get().getDocuments();
             return queryDocumentSnapshotList.stream()
                     .map(d -> d.toObject(ServiceProvider.class))
