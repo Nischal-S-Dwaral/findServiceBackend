@@ -17,4 +17,5 @@ import java.util.List;
 public class GetServiceListByServiceProviderResponse extends RestApiResponse {
 
     private List<Service> serviceList;
+    private String serviceProviderName;
 }
