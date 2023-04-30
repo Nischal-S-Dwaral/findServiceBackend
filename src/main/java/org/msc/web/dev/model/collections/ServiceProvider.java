@@ -11,8 +11,9 @@ public class ServiceProvider {
 
     private String id;
     private String email;
-    private String password;
+
     private String address;
+    private String name;
     private String description;
     private String approvalStatus;
 }

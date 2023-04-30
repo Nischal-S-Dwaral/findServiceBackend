@@ -7,6 +7,7 @@ public enum UseCasesEnums {
 
     CREATE("create"),
     FIND_BY_ID("findById"),
+    FIND_BY_SP_ID("findBySPid"),
     UPDATE_STATUS("updateStatus"),
     DELETE("delete"),
     ADD("add"),

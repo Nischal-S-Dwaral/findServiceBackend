@@ -61,10 +61,8 @@ public class AddServiceImpl implements IUseCaseImplementation<AddServiceRequest,
 
     @Override
     public WriteResult process(AddServiceRequest addServiceRequest) {
-
         try {
             List<String> photos = serviceImageUploadRepository.uploadServiceImageToFirebase(addServiceRequest.getPhotos());
-
             org.msc.web.dev.model.collections.Service service = generateServiceFromParameterMap(addServiceRequest.getParameterMap());
             service.setPhotos(photos);
             service.setCreatedAt(String.valueOf(new Timestamp(System.currentTimeMillis())));
@@ -114,8 +112,8 @@ public class AddServiceImpl implements IUseCaseImplementation<AddServiceRequest,
                         service.setDescription(parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_DESCRIPTION)[0]);
                         break;
                     }
-                    case ServiceConstants.MULTIPART_PARAMETER_KEY_NAME: {
-                        service.setName(parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_NAME)[0]);
+                    case ServiceConstants.MULTIPART_PARAMETER_KEY_TITLE: {
+                        service.setName(parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_TITLE)[0]);
                         break;
                     }
                 }

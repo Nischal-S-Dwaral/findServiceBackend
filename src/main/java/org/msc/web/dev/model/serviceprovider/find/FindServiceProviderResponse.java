@@ -15,12 +15,16 @@ import org.msc.web.dev.model.collections.ServiceProvider;
 public class FindServiceProviderResponse extends RestApiResponse {
 
     private String email;
+    private String id;
     private String address;
+    private String name;
     private String description;
     private String approvalStatus;
 
     public FindServiceProviderResponse(ServiceProvider serviceProvider) {
         this.email = serviceProvider.getEmail();
+        this.id = serviceProvider.getId();
+        this.name = serviceProvider.getName();
         this.address = serviceProvider.getAddress();
         this.description = serviceProvider.getDescription();
         this.approvalStatus = serviceProvider.getApprovalStatus();

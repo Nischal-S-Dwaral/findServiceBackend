@@ -9,7 +9,7 @@ public class ServiceConstants {
     public static final String MULTIPART_PARAMETER_KEY_CATEGORY = "category";
     public static final String MULTIPART_PARAMETER_KEY_PRICE = "price";
     public static final String MULTIPART_PARAMETER_KEY_AVAILABILITY= "availability";
-    public static final String MULTIPART_PARAMETER_KEY_NAME = "name";
+    public static final String MULTIPART_PARAMETER_KEY_TITLE = "title";
 
     public static final String SERVICE_IMAGE_BUCKET_NAME = "findservice-4922d.appspot.com";
     public static final String FIREBASE_STORAGE_IMAGE_URL_FORMAT_STRING = "https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/%s?alt=media";

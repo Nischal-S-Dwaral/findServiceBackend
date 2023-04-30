@@ -16,7 +16,6 @@ public class ServiceProviderRepository {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
         DocumentReference documentReference = databaseReference.document();
-        serviceProvider.setId(documentReference.getId());
         return documentReference.create(serviceProvider);
     }
 
@@ -44,5 +43,13 @@ public class ServiceProviderRepository {
         return databaseReference
                 .whereGreaterThanOrEqualTo("approvalStatus", status)
                 .whereLessThanOrEqualTo("approvalStatus", status).get();
+    }
+
+    public ApiFuture<QuerySnapshot> findBySPid(String id) {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
+        return databaseReference.whereEqualTo("id", id).get();
+
+
     }
 }
