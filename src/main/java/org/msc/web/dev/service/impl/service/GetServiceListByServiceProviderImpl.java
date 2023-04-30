@@ -1,7 +1,6 @@
 package org.msc.web.dev.service.impl.service;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,6 @@ import org.msc.web.dev.repository.ServiceProviderRepository;
 import org.msc.web.dev.repository.ServiceRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
-import org.msc.web.dev.utils.JsonUtil;
 import org.msc.web.dev.utils.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,24 +54,25 @@ public class GetServiceListByServiceProviderImpl implements IUseCaseImplementati
     public GetServiceListByServiceProviderData process(String serviceProviderId) {
         try {
             ApiFuture<QuerySnapshot> querySnapshotApiFuture = serviceRepository.getByServiceProvider(serviceProviderId);
-            ApiFuture<DocumentSnapshot>  documentSnapshotApiFuture = serviceProviderRepository.findById(serviceProviderId);
+            ApiFuture<QuerySnapshot>  querySnapshotApiFuture1 = serviceProviderRepository.findBySPid(serviceProviderId);
             List<QueryDocumentSnapshot> queryDocumentSnapshotList = querySnapshotApiFuture.get().getDocuments();
 
             List<org.msc.web.dev.model.collections.Service> serviceList = queryDocumentSnapshotList.stream()
                     .map(d -> d.toObject(org.msc.web.dev.model.collections.Service.class))
                     .collect(Collectors.toList());
 
-            return new GetServiceListByServiceProviderData(serviceList, documentSnapshotApiFuture.get());
+            return new GetServiceListByServiceProviderData(serviceList, querySnapshotApiFuture1.get());
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to get Service List from FireBase "+exception.getMessage());
         }
     }
 
     @Override
-    public GetServiceListByServiceProviderResponse postProcess(GetServiceListByServiceProviderData getServiceListByServiceProviderData) {
+    public GetServiceListByServiceProviderResponse postProcess(
+            GetServiceListByServiceProviderData getServiceListByServiceProviderData) {
 
-        Map<String, Object> documentMap = getServiceListByServiceProviderData.getDocumentSnapshot().getData();
-        ServiceProvider serviceProvider = JsonUtil.toObject(documentMap, ServiceProvider.class);
+        ServiceProvider serviceProvider = getServiceListByServiceProviderData.getQuerySnapshot()
+                .getDocuments().get(0).toObject(ServiceProvider.class);
 
         return new GetServiceListByServiceProviderResponse(
                 getServiceListByServiceProviderData.getServiceList(),

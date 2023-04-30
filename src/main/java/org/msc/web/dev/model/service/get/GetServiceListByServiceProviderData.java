@@ -1,6 +1,7 @@
 package org.msc.web.dev.model.service.get;
 
 import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,5 @@ import java.util.List;
 public class GetServiceListByServiceProviderData {
 
     private List<Service> serviceList;
-    private DocumentSnapshot documentSnapshot;
+    private QuerySnapshot querySnapshot;
 }
