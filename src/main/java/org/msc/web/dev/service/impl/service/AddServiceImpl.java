@@ -8,6 +8,7 @@ import org.msc.web.dev.enums.ServiceEnum;
 import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.BadRequest;
 import org.msc.web.dev.exceptions.InternalServerError;
+import org.msc.web.dev.model.service.Position;
 import org.msc.web.dev.model.service.add.AddServiceRequest;
 import org.msc.web.dev.model.service.add.AddServiceResponse;
 import org.msc.web.dev.repository.ServiceImageUploadRepository;
@@ -114,6 +115,15 @@ public class AddServiceImpl implements IUseCaseImplementation<AddServiceRequest,
                     }
                     case ServiceConstants.MULTIPART_PARAMETER_KEY_TITLE: {
                         service.setName(parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_TITLE)[0]);
+                        break;
+                    }
+                    case ServiceConstants.MULTIPART_PARAMETER_KEY_POSITION: {
+                        String position = parameterMap.get(ServiceConstants.MULTIPART_PARAMETER_KEY_POSITION)[0];
+                        String[] splitPosition = position.split(",");
+
+                        service.setPosition(new Position(
+                                Double.parseDouble(splitPosition[0]),
+                                Double.parseDouble(splitPosition[1])));
                         break;
                     }
                 }

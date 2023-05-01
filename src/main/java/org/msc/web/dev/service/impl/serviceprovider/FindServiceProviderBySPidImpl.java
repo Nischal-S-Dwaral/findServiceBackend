@@ -1,8 +1,6 @@
 package org.msc.web.dev.service.impl.serviceprovider;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import lombok.extern.slf4j.Slf4j;
 import org.msc.web.dev.constants.ServiceProviderConstants;
@@ -16,17 +14,14 @@ import org.msc.web.dev.repository.ServiceProviderRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.msc.web.dev.utils.CommonUtils;
-import org.msc.web.dev.utils.JsonUtil;
 import org.msc.web.dev.utils.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -66,7 +61,4 @@ public class FindServiceProviderBySPidImpl implements IUseCaseImplementation<
         return new FindServiceProviderResponse(serviceProvider);
 
     }
-
-
-
 }

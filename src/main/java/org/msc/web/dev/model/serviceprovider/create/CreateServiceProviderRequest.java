@@ -10,4 +10,5 @@ public class CreateServiceProviderRequest {
     private String id;
     private String address;
     private String description;
+    private String position;
 }

@@ -20,6 +20,7 @@ public class FindServiceProviderResponse extends RestApiResponse {
     private String name;
     private String description;
     private String approvalStatus;
+    private String position;
 
     public FindServiceProviderResponse(ServiceProvider serviceProvider) {
         this.email = serviceProvider.getEmail();
@@ -28,5 +29,6 @@ public class FindServiceProviderResponse extends RestApiResponse {
         this.address = serviceProvider.getAddress();
         this.description = serviceProvider.getDescription();
         this.approvalStatus = serviceProvider.getApprovalStatus();
+        this.position = serviceProvider.getPosition();
     }
 }

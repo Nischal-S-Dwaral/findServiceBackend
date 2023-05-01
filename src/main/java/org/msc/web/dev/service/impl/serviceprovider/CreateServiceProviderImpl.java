@@ -65,6 +65,7 @@ public class CreateServiceProviderImpl implements IUseCaseImplementation<
         serviceProvider.setDescription(request.getDescription());
         serviceProvider.setId(request.getId());
         serviceProvider.setApprovalStatus(ServiceProviderConstants.INITIAL_SERVICE_PROVIDER_REQUEST);
+        serviceProvider.setPosition(request.getPosition());
 
         try {
             ApiFuture<WriteResult> data = serviceProviderRepository.create(serviceProvider);

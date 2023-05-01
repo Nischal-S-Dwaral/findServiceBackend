@@ -1,6 +1,7 @@
 package org.msc.web.dev.model.collections;
 
 import lombok.Data;
+import org.msc.web.dev.model.service.Position;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public class Service {
     private List<String> photos;
     private String totalRating;
     private String numberOfRatings;
+    private Position position;
 }
