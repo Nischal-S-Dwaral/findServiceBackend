@@ -1,0 +1,1764 @@
+{
+	"info": {
+		"_postman_id": "0a074e4b-60c1-4968-ae75-5f02aeea96b5",
+		"name": "Find Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Service Provider",
+			"item": [
+				{
+					"name": "Delete By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/serviceProvider/delete?id=0ipkEf8zGA35B1dWD1ov",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceProvider",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0ipkEf8zGA35B1dWD1ov"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Service Provider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"testing@gmail.com\",\n    \"password\": \"test1\",\n    \"address\": \"Southampton, UK\",\n    \"description\": \"Creating the service provider for testing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceProvider/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceProvider",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Service Provider",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"testing@gmail.com\",\n    \"password\": \"test1\",\n    \"address\": \"Southampton, UK\",\n    \"description\": \"Creating the service provider for testing\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceProvider/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceProvider",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680965981,\n        \"nanos\": 499089000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceProviderId\": \"cRJDbBu4vnxDjFMDgw6S\",\n    \"updateStatus\": \"Approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceProvider/updateStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceProvider",
+								"updateStatus"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n    \"updateStatus\": \"Accepted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceProvider/updateStatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceProvider",
+										"updateStatus"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680966256,\n        \"nanos\": 861251000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Find By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\",\n    \"address\": \"Southampton, UK - SO17 2GY\",\n    \"description\": \"This is going to be some random text\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceProvider/findById?id=cRJDbBu4vnxDjFMDgw6S",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceProvider",
+								"findById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "cRJDbBu4vnxDjFMDgw6S"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Find By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\",\n    \"address\": \"Southampton, UK - SO17 2GY\",\n    \"description\": \"This is going to be some random text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceProvider/findById?id=cRJDbBu4vnxDjFMDgw6S",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceProvider",
+										"findById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "cRJDbBu4vnxDjFMDgw6S"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"email\": \"testing@gmail.com\",\n    \"address\": \"Southampton, UK\",\n    \"description\": \"Creating the service provider for testing\",\n    \"approvalStatus\": \"Awaiting\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Service Provider List by Status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\",\n    \"address\": \"Southampton, UK - SO17 2GY\",\n    \"description\": \"This is going to be some random text\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceProvider/getServiceProviderList?approvalStatus=Approved",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceProvider",
+								"getServiceProviderList"
+							],
+							"query": [
+								{
+									"key": "approvalStatus",
+									"value": "Approved"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Service Provider List by Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\",\n    \"address\": \"Southampton, UK - SO17 2GY\",\n    \"description\": \"This is going to be some random text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceProvider/getServiceProviderList?approvalStatus=Approved",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceProvider",
+										"getServiceProviderList"
+									],
+									"query": [
+										{
+											"key": "approvalStatus",
+											"value": "Approved"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceProviderList\": [\n        {\n            \"id\": \"cRJDbBu4vnxDjFMDgw6S\",\n            \"email\": \"testing@gmail.com\",\n            \"password\": \"test1\",\n            \"address\": \"Southampton, UK\",\n            \"description\": \"Creating the service provider for testing\",\n            \"approvalStatus\": \"Approved\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n    \"customerId\": \"197329\",\n    \"rating\": \"4.5\",\n    \"comment\": \"Comfortable service\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/review/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"review",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n    \"customerId\": \"197329\",\n    \"rating\": \"4.5\",\n    \"comment\": \"Comfortable service\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/review/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"review",
+										"add"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"reviewAddTimestamp\": {\n        \"seconds\": 1680967115,\n        \"nanos\": 206395000\n    },\n    \"serviceUpdateTimestamp\": {\n        \"seconds\": 1680967115,\n        \"nanos\": 263466000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by service id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/review/getReviewList?serviceId=3Rp0k8eTKD0lK06Cq18N",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"review",
+								"getReviewList"
+							],
+							"query": [
+								{
+									"key": "serviceId",
+									"value": "3Rp0k8eTKD0lK06Cq18N"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by service id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/review/getReviewList?serviceId=3Rp0k8eTKD0lK06Cq18N",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"review",
+										"getReviewList"
+									],
+									"query": [
+										{
+											"key": "serviceId",
+											"value": "3Rp0k8eTKD0lK06Cq18N"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"reviews\": [\n        {\n            \"id\": \"3q6PJznKMjyAHb6R6g6T\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"customerName\": \"Name - 4567\",\n            \"rating\": \"4.5\",\n            \"comment\": \"Very good service\",\n            \"timeStamp\": \"06/04/2023\"\n        },\n        {\n            \"id\": \"OjylQia0qheMonTKSvrP\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"customerName\": \"Name - 1234\",\n            \"rating\": \"5\",\n            \"comment\": \"Wonderful experience and highly recommended\",\n            \"timeStamp\": \"06/04/2023\"\n        },\n        {\n            \"id\": \"dApzSAqKj8YTTADTpZqJ\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"customerName\": \"Name - 197329\",\n            \"rating\": \"4.5\",\n            \"comment\": \"Comfortable service\",\n            \"timeStamp\": \"08/04/2023\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/review/delete?reviewId=3q6PJznKMjyAHb6R6g6T",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"review",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "reviewId",
+									"value": "3q6PJznKMjyAHb6R6g6T"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/review/delete?reviewId=3q6PJznKMjyAHb6R6g6T",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"review",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "reviewId",
+											"value": "3q6PJznKMjyAHb6R6g6T"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"deleteReviewTimestamp\": {\n        \"seconds\": 1680967229,\n        \"nanos\": 826226000\n    },\n    \"updateServiceTimestamp\": {\n        \"seconds\": 1680967229,\n        \"nanos\": 854910000\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photos",
+									"type": "file",
+									"src": [
+										"/Users/nischalsd/Desktop/img1.jpeg",
+										"/Users/nischalsd/Desktop/img2.jpeg",
+										"/Users/nischalsd/Desktop/img3.jpeg",
+										"/Users/nischalsd/Desktop/img4.jpeg",
+										"/Users/nischalsd/Desktop/img5.jpeg"
+									]
+								},
+								{
+									"key": "serviceProviderId",
+									"value": "cRJDbBu4vnxDjFMDgw6S",
+									"type": "default"
+								},
+								{
+									"key": "location",
+									"value": "City Center, Southampton",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Plumbing service at the best. Quick and responsive!",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "450",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "plumbing",
+									"type": "default"
+								},
+								{
+									"key": "availability",
+									"value": "Wed-Sun 11:00 to 19:00",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "Plumbing Hamsphire",
+									"type": "default"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/service/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"service",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "photos",
+											"type": "file",
+											"src": [
+												"/Users/nischalsd/Desktop/img1.jpeg",
+												"/Users/nischalsd/Desktop/img2.jpeg",
+												"/Users/nischalsd/Desktop/img3.jpeg",
+												"/Users/nischalsd/Desktop/img4.jpeg",
+												"/Users/nischalsd/Desktop/img5.jpeg"
+											]
+										},
+										{
+											"key": "serviceProviderId",
+											"value": "cRJDbBu4vnxDjFMDgw6S",
+											"type": "default"
+										},
+										{
+											"key": "location",
+											"value": "City Center, Southampton",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "Plumbing service at the best. Quick and responsive!",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "450",
+											"type": "default"
+										},
+										{
+											"key": "category",
+											"value": "plumbing",
+											"type": "default"
+										},
+										{
+											"key": "availability",
+											"value": "Wed-Sun 11:00 to 19:00",
+											"type": "default"
+										},
+										{
+											"key": "name",
+											"value": "Plumbing Hamsphire",
+											"type": "default"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/service/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"service",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680966595,\n        \"nanos\": 190760000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/service/findById?id=3Rp0k8eTKD0lK06Cq18N",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"service",
+								"findById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3Rp0k8eTKD0lK06Cq18N"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/service/findById?id=3Rp0k8eTKD0lK06Cq18N",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"service",
+										"findById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3Rp0k8eTKD0lK06Cq18N"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"id\": \"3Rp0k8eTKD0lK06Cq18N\",\n    \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n    \"location\": \"Westminster, London\",\n    \"description\": \"This is a wonderful kids baby sitting\",\n    \"price\": \"1400\",\n    \"category\": \"babySitting\",\n    \"availability\": \"Mon-Sat 9:00 to 18:00\",\n    \"photos\": [\n        \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/ceaf914a-9fcf-411f-a48e-df5ffc50a01b.jpeg?alt=media\",\n        \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/d78b4e45-d156-491a-8a3d-35e9f8a88a1a.jpeg?alt=media\",\n        \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc246010-52fc-4019-a6e4-2037fbcdecfd.jpeg?alt=media\",\n        \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc17c26b-a213-4a10-babf-fca33adc50a0.jpeg?alt=media\",\n        \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/af10883b-0976-4733-9f05-46b5a9375b48.jpeg?alt=media\"\n    ],\n    \"totalRating\": \"9.5\",\n    \"numberOfRatings\": \"2\",\n    \"name\": \"Kidz Plays\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by service provider id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/service/getServiceListByServiceProvider?serviceProviderId=5V9PJSDC2dAgWLmoctDu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"service",
+								"getServiceListByServiceProvider"
+							],
+							"query": [
+								{
+									"key": "serviceProviderId",
+									"value": "5V9PJSDC2dAgWLmoctDu"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by service provider id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/service/getServiceListByServiceProvider?serviceProviderId=5V9PJSDC2dAgWLmoctDu",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"service",
+										"getServiceListByServiceProvider"
+									],
+									"query": [
+										{
+											"key": "serviceProviderId",
+											"value": "5V9PJSDC2dAgWLmoctDu"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceList\": [\n        {\n            \"id\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"name\": \"Kidz Plays\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"location\": \"Westminster, London\",\n            \"description\": \"This is a wonderful kids baby sitting\",\n            \"price\": \"1400\",\n            \"category\": \"babySitting\",\n            \"availability\": \"Mon-Sat 9:00 to 18:00\",\n            \"createdAt\": \"2023-04-06 01:32:52.782\",\n            \"updatedAt\": null,\n            \"photos\": [\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/ceaf914a-9fcf-411f-a48e-df5ffc50a01b.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/d78b4e45-d156-491a-8a3d-35e9f8a88a1a.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc246010-52fc-4019-a6e4-2037fbcdecfd.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc17c26b-a213-4a10-babf-fca33adc50a0.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/af10883b-0976-4733-9f05-46b5a9375b48.jpeg?alt=media\"\n            ],\n            \"totalRating\": \"9.5\",\n            \"numberOfRatings\": \"2\"\n        },\n        {\n            \"id\": \"qhKOKNgEA2pN2QMtb9Sl\",\n            \"name\": \"London Electricals\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"location\": \"Westminster, London\",\n            \"description\": \"Excellent electrical for your office or homes\",\n            \"price\": \"150\",\n            \"category\": \"electricalRepairs\",\n            \"availability\": \"Mon-Sun 9:00 to 21:00\",\n            \"createdAt\": \"2023-04-06 13:39:39.843\",\n            \"updatedAt\": null,\n            \"photos\": [\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc18fd17-7f44-4368-b162-8e13a8be426e.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/d8095a95-1e2c-4ff0-9bd4-a0c0b5e39ac4.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/7d0ef4a9-d893-4c06-bb68-9c691d13252d.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/e3403152-609b-4b26-92bf-756d0d67938e.jpeg?alt=media\"\n            ],\n            \"totalRating\": \"0.0\",\n            \"numberOfRatings\": \"0\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/service/getServiceList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"service",
+								"getServiceList"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/service/getServiceList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"service",
+										"getServiceList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceList\": [\n        {\n            \"id\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"name\": \"Kidz Plays\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"location\": \"Westminster, London\",\n            \"description\": \"This is a wonderful kids baby sitting\",\n            \"price\": \"1400\",\n            \"category\": \"babySitting\",\n            \"availability\": \"Mon-Sat 9:00 to 18:00\",\n            \"createdAt\": \"2023-04-06 01:32:52.782\",\n            \"updatedAt\": null,\n            \"photos\": [\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/ceaf914a-9fcf-411f-a48e-df5ffc50a01b.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/d78b4e45-d156-491a-8a3d-35e9f8a88a1a.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc246010-52fc-4019-a6e4-2037fbcdecfd.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc17c26b-a213-4a10-babf-fca33adc50a0.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/af10883b-0976-4733-9f05-46b5a9375b48.jpeg?alt=media\"\n            ],\n            \"totalRating\": \"9.5\",\n            \"numberOfRatings\": \"2\"\n        },\n        {\n            \"id\": \"OLDRmeKZTEg4FdFZVquG\",\n            \"name\": \"Plumbing Hamsphire\",\n            \"serviceProviderId\": \"cRJDbBu4vnxDjFMDgw6S\",\n            \"location\": \"City Center, Southampton\",\n            \"description\": \"Plumbing service at the best. Quick and responsive!\",\n            \"price\": \"450\",\n            \"category\": \"plumbing\",\n            \"availability\": \"Wed-Sun 11:00 to 19:00\",\n            \"createdAt\": \"2023-04-08 16:09:55.061\",\n            \"updatedAt\": null,\n            \"photos\": [\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/c6850288-e49e-4810-b527-a5dc6fd5e78b.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/661b67d6-f218-4fd9-838c-653a448bf6b0.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/a70de8d9-ca56-468c-b301-0656373674b6.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/8258477a-8236-4a3c-b2a8-b6691c797f19.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/14d74fc0-7793-409f-94f1-7fb734767daa.jpeg?alt=media\"\n            ],\n            \"totalRating\": \"0.0\",\n            \"numberOfRatings\": \"0\"\n        },\n        {\n            \"id\": \"qhKOKNgEA2pN2QMtb9Sl\",\n            \"name\": \"London Electricals\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"location\": \"Westminster, London\",\n            \"description\": \"Excellent electrical for your office or homes\",\n            \"price\": \"150\",\n            \"category\": \"electrical\",\n            \"availability\": \"Mon-Sun 9:00 to 21:00\",\n            \"createdAt\": \"2023-04-06 13:39:39.843\",\n            \"updatedAt\": null,\n            \"photos\": [\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc18fd17-7f44-4368-b162-8e13a8be426e.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/d8095a95-1e2c-4ff0-9bd4-a0c0b5e39ac4.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/7d0ef4a9-d893-4c06-bb68-9c691d13252d.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/e3403152-609b-4b26-92bf-756d0d67938e.jpeg?alt=media\"\n            ],\n            \"totalRating\": \"0.0\",\n            \"numberOfRatings\": \"0\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/service/getServiceList?category=electricalRepairs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"service",
+								"getServiceList"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "electricalRepairs"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/service/getServiceList?category=electrical",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"service",
+										"getServiceList"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "electrical"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceList\": [\n        {\n            \"id\": \"qhKOKNgEA2pN2QMtb9Sl\",\n            \"name\": \"London Electricals\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"location\": \"Westminster, London\",\n            \"description\": \"Excellent electrical for your office or homes\",\n            \"price\": \"150\",\n            \"category\": \"electrical\",\n            \"availability\": \"Mon-Sun 9:00 to 21:00\",\n            \"createdAt\": \"2023-04-06 13:39:39.843\",\n            \"updatedAt\": null,\n            \"photos\": [\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/cc18fd17-7f44-4368-b162-8e13a8be426e.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/d8095a95-1e2c-4ff0-9bd4-a0c0b5e39ac4.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/7d0ef4a9-d893-4c06-bb68-9c691d13252d.jpeg?alt=media\",\n                \"https://firebasestorage.googleapis.com/v0/b/findservice-4922d.appspot.com/o/e3403152-609b-4b26-92bf-756d0d67938e.jpeg?alt=media\"\n            ],\n            \"totalRating\": \"0.0\",\n            \"numberOfRatings\": \"0\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Service Request",
+			"item": [
+				{
+					"name": "Add Service Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n    \"customerId\": \"5698\",\n    \"customerName\": \"Max\",\n    \"description\": \"This is going to be some random text and the description of the service request\",\n    \"date\": \"12/04/2023\",\n    \"time\": \"04:30pm\",\n    \"address\": \"Craydon, London, UK\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceRequest/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceRequest",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Service Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n    \"customerId\": \"5698\",\n    \"customerName\": \"Max\",\n    \"description\": \"This is going to be some random text and the description of the service request\",\n    \"date\": \"12/04/2023\",\n    \"time\": \"04:30pm\",\n    \"address\": \"Craydon, London, UK\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceRequest/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceRequest",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680879395,\n        \"nanos\": 360660000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceRequest/getByID?id=9vvOoIFSYlpDBw4a5lIj",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceRequest",
+								"getByID"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9vvOoIFSYlpDBw4a5lIj"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceRequest/getByID?id=9vvOoIFSYlpDBw4a5lIj",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceRequest",
+										"getByID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "9vvOoIFSYlpDBw4a5lIj"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceRequest\": {\n        \"id\": \"9vvOoIFSYlpDBw4a5lIj\",\n        \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n        \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n        \"serviceName\": \"Kidz Plays\",\n        \"serviceCategory\": \"babySitting\",\n        \"customerId\": \"5698\",\n        \"customerName\": \"Max\",\n        \"description\": \"This is going to be some random text and the description of the service request\",\n        \"date\": \"12/04/2023\",\n        \"time\": \"04:30pm\",\n        \"address\": \"Craydon, London, UK\",\n        \"status\": \"Pending\",\n        \"price\": \"1400\",\n        \"createdAt\": \"2023-04-07 15:56:35.222\",\n        \"updatedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Service Provider List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceRequest/getServiceRequestList?serviceId=3Rp0k8eTKD0lK06Cq18N",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceRequest",
+								"getServiceRequestList"
+							],
+							"query": [
+								{
+									"key": "serviceId",
+									"value": "3Rp0k8eTKD0lK06Cq18N"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "By Service Provider ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceRequest/getServiceRequestList?serviceProviderId=5V9PJSDC2dAgWLmoctDu",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceRequest",
+										"getServiceRequestList"
+									],
+									"query": [
+										{
+											"key": "serviceProviderId",
+											"value": "5V9PJSDC2dAgWLmoctDu"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceRequestList\": [\n        {\n            \"id\": \"9vvOoIFSYlpDBw4a5lIj\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"serviceName\": \"Kidz Plays\",\n            \"serviceCategory\": \"babySitting\",\n            \"customerId\": \"5698\",\n            \"customerName\": \"Max\",\n            \"description\": \"This is going to be some random text and the description of the service request\",\n            \"date\": \"12/04/2023\",\n            \"time\": \"04:30pm\",\n            \"address\": \"Craydon, London, UK\",\n            \"status\": \"Pending\",\n            \"price\": \"1400\",\n            \"createdAt\": \"2023-04-07 15:56:35.222\",\n            \"updatedAt\": null\n        },\n        {\n            \"id\": \"ai2eu5ra8Z2LOR0JquGv\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"serviceName\": \"Kidz Plays\",\n            \"serviceCategory\": \"babySitting\",\n            \"customerId\": \"1234\",\n            \"customerName\": \"John\",\n            \"description\": \"This is going to be some random text\",\n            \"date\": \"10/04/2023\",\n            \"time\": \"12:30pm\",\n            \"address\": \"London, UK\",\n            \"status\": \"Pending\",\n            \"price\": \"1400\",\n            \"createdAt\": \"2023-04-06 19:09:42.119\",\n            \"updatedAt\": null\n        }\n    ]\n}"
+						},
+						{
+							"name": "By Customer ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceRequest/getServiceRequestList?customerId=5698",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceRequest",
+										"getServiceRequestList"
+									],
+									"query": [
+										{
+											"key": "customerId",
+											"value": "5698"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceRequestList\": [\n        {\n            \"id\": \"9vvOoIFSYlpDBw4a5lIj\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"serviceName\": \"Kidz Plays\",\n            \"serviceCategory\": \"babySitting\",\n            \"customerId\": \"5698\",\n            \"customerName\": \"Max\",\n            \"description\": \"This is going to be some random text and the description of the service request\",\n            \"date\": \"12/04/2023\",\n            \"time\": \"04:30pm\",\n            \"address\": \"Craydon, London, UK\",\n            \"status\": \"Pending\",\n            \"price\": \"1400\",\n            \"createdAt\": \"2023-04-07 15:56:35.222\",\n            \"updatedAt\": null\n        }\n    ]\n}"
+						},
+						{
+							"name": "By Service ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceRequest/getServiceRequestList?serviceId=3Rp0k8eTKD0lK06Cq18N",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceRequest",
+										"getServiceRequestList"
+									],
+									"query": [
+										{
+											"key": "serviceId",
+											"value": "3Rp0k8eTKD0lK06Cq18N"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"serviceRequestList\": [\n        {\n            \"id\": \"9vvOoIFSYlpDBw4a5lIj\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"serviceName\": \"Kidz Plays\",\n            \"serviceCategory\": \"babySitting\",\n            \"customerId\": \"5698\",\n            \"customerName\": \"Max\",\n            \"description\": \"This is going to be some random text and the description of the service request\",\n            \"date\": \"12/04/2023\",\n            \"time\": \"04:30pm\",\n            \"address\": \"Craydon, London, UK\",\n            \"status\": \"Pending\",\n            \"price\": \"1400\",\n            \"createdAt\": \"2023-04-07 15:56:35.222\",\n            \"updatedAt\": null\n        },\n        {\n            \"id\": \"ai2eu5ra8Z2LOR0JquGv\",\n            \"serviceId\": \"3Rp0k8eTKD0lK06Cq18N\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"serviceName\": \"Kidz Plays\",\n            \"serviceCategory\": \"babySitting\",\n            \"customerId\": \"1234\",\n            \"customerName\": \"John\",\n            \"description\": \"This is going to be some random text\",\n            \"date\": \"10/04/2023\",\n            \"time\": \"12:30pm\",\n            \"address\": \"London, UK\",\n            \"status\": \"Pending\",\n            \"price\": \"1400\",\n            \"createdAt\": \"2023-04-06 19:09:42.119\",\n            \"updatedAt\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceRequestId\": \"9vvOoIFSYlpDBw4a5lIj\",\n    \"updatedStatus\": \"Accepted\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/serviceRequest/updateStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"serviceRequest",
+								"updateStatus"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceRequestId\": \"9vvOoIFSYlpDBw4a5lIj\",\n    \"updatedStatus\": \"Accepted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/serviceRequest/updateStatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"serviceRequest",
+										"updateStatus"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680882786,\n        \"nanos\": 768912000\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments Service Request",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceRequestId\" : \"9vvOoIFSYlpDBw4a5lIj\",\n    \"name\": \"Customer\",\n    \"text\": \"Sure!! 6:00pm is alright with you?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/commentServiceRequest/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commentServiceRequest",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "From Service Provider",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceRequestId\" : \"9vvOoIFSYlpDBw4a5lIj\",\n    \"name\": \"Service Provider\",\n    \"text\": \"The timings you have requested is currently packed for me. Is it possible to choose another timeslot\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/commentServiceRequest/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"commentServiceRequest",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680889591,\n        \"nanos\": 542949000\n    }\n}"
+						},
+						{
+							"name": "From Customer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceRequestId\" : \"9vvOoIFSYlpDBw4a5lIj\",\n    \"name\": \"Customer\",\n    \"text\": \"Sure!! 6:00pm is alright with you?\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/commentServiceRequest/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"commentServiceRequest",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680889833,\n        \"nanos\": 61874000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/commentServiceRequest/getByID?serviceRequestId=9vvOoIFSYlpDBw4a5lIj",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commentServiceRequest",
+								"getByID"
+							],
+							"query": [
+								{
+									"key": "serviceRequestId",
+									"value": "9vvOoIFSYlpDBw4a5lIj"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/commentServiceRequest/getByID?serviceRequestId=9vvOoIFSYlpDBw4a5lIj",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"commentServiceRequest",
+										"getByID"
+									],
+									"query": [
+										{
+											"key": "serviceRequestId",
+											"value": "9vvOoIFSYlpDBw4a5lIj"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"commentList\": [\n        {\n            \"id\": \"k17tXLjq6XSKz2xKhrZt\",\n            \"serviceRequestId\": \"9vvOoIFSYlpDBw4a5lIj\",\n            \"name\": \"Customer\",\n            \"text\": \"Sure!! 6:00pm is alright with you?\",\n            \"timestamp\": \"2023-04-07 18:50:32.988\"\n        },\n        {\n            \"id\": \"kemlKjEfd340n5Ll7LuA\",\n            \"serviceRequestId\": \"9vvOoIFSYlpDBw4a5lIj\",\n            \"name\": \"Service Provider\",\n            \"text\": \"The timings you have requested is currently packed for me. Is it possible to choose another timeslot\",\n            \"timestamp\": \"2023-04-07 18:46:28.931\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments Service Provider",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serviceProviderId\" : \"5V9PJSDC2dAgWLmoctDu\",\n    \"name\": \"Service Provider\",\n    \"text\": \"Sure!!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/commentServiceProvider/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commentServiceProvider",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "From Service Provider",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceProviderId\" : \"5V9PJSDC2dAgWLmoctDu\",\n    \"name\": \"Service Provider\",\n    \"text\": \"Sure!!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/commentServiceProvider/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"commentServiceProvider",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680890390,\n        \"nanos\": 298936000\n    }\n}"
+						},
+						{
+							"name": "From Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"serviceProviderId\" : \"5V9PJSDC2dAgWLmoctDu\",\n    \"name\": \"Admin\",\n    \"text\": \"Can you eloborate on your description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/commentServiceProvider/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"commentServiceProvider",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"timestamp\": {\n        \"seconds\": 1680890272,\n        \"nanos\": 938746000\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/commentServiceProvider/getByID?serviceProviderId=5V9PJSDC2dAgWLmoctDu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commentServiceProvider",
+								"getByID"
+							],
+							"query": [
+								{
+									"key": "serviceProviderId",
+									"value": "5V9PJSDC2dAgWLmoctDu"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/commentServiceProvider/getByID?serviceProviderId=5V9PJSDC2dAgWLmoctDu",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"commentServiceProvider",
+										"getByID"
+									],
+									"query": [
+										{
+											"key": "serviceProviderId",
+											"value": "5V9PJSDC2dAgWLmoctDu"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"returnCode\": \"0\",\n    \"commentList\": [\n        {\n            \"id\": \"Y9IyjyAweJgihM8qZZ9z\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"name\": \"Service Provider\",\n            \"text\": \"Sure!!\",\n            \"timestamp\": \"2023-04-07 18:59:50.197\"\n        },\n        {\n            \"id\": \"mSk9n69tbWgzccHymHXB\",\n            \"serviceProviderId\": \"5V9PJSDC2dAgWLmoctDu\",\n            \"name\": \"Admin\",\n            \"text\": \"Can you eloborate on your description\",\n            \"timestamp\": \"2023-04-07 18:57:52.723\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
