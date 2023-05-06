@@ -9,6 +9,7 @@ import org.msc.web.dev.exceptions.BadRequest;
 import org.msc.web.dev.exceptions.InternalServerError;
 import org.msc.web.dev.model.servicerequest.update.ServiceRequestStatusUpdateRequest;
 import org.msc.web.dev.model.servicerequest.update.ServiceRequestStatusUpdateResponse;
+import org.msc.web.dev.repository.NotificationRepository;
 import org.msc.web.dev.repository.ServiceRequestRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
@@ -30,6 +31,9 @@ public class UpdateServiceRequestStatusImpl implements IUseCaseImplementation<
 
     @Autowired
     private ServiceRequestRepository serviceRequestRepository;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @PostConstruct
     public void initProp() {
@@ -58,6 +62,14 @@ public class UpdateServiceRequestStatusImpl implements IUseCaseImplementation<
             ApiFuture<WriteResult> data = serviceRequestRepository.updateStatus(
                     serviceRequestStatusUpdateRequest.getServiceRequestId(), fieldMap
             );
+            if (serviceRequestStatusUpdateRequest.getUpdatedStatus().equals("Completed")) {
+                notificationRepository.createForReview(serviceRequestStatusUpdateRequest.getServiceRequestId());
+            } else {
+                notificationRepository.createForUpdateByServiceProvider(
+                        serviceRequestStatusUpdateRequest.getServiceRequestId(),
+                        "Updated the status to "+ serviceRequestStatusUpdateRequest.getUpdatedStatus()+" for the request: "+ serviceRequestStatusUpdateRequest.getServiceRequestId()
+                );
+            }
             return data.get();
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to update Service Request Status in FireBase "+exception.getMessage());

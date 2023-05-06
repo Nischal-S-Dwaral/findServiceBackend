@@ -9,7 +9,8 @@ public enum ServiceEnum {
   REVIEW("review"),
   SERVICE_REQUEST("serviceRequest"),
   COMMENT_SERVICE_REQUEST("commentServiceRequest"),
-  COMMENT_SERVICE_PROVIDER("commentServiceProvider");
+  COMMENT_SERVICE_PROVIDER("commentServiceProvider"),
+  NOTIFICATION("notification");
 
   private final String name;
 

@@ -12,4 +12,6 @@ public class Constants {
     public static final String SERVICE_REQUEST_COLLECTION = "servicesRequests";
     public static final String COMMENTS_SERVICE_REQUEST_COLLECTION = "commentsServiceRequests";
     public static final String COMMENTS_SERVICE_PROVIDER_COLLECTION = "commentsServiceProvider";
+    public static final String NOTIFICATION_COLLECTION = "notifications";
+
 }

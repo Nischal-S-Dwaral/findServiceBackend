@@ -9,6 +9,7 @@ import org.msc.web.dev.exceptions.BadRequest;
 import org.msc.web.dev.exceptions.InternalServerError;
 import org.msc.web.dev.model.service.update.UpdateServiceRequest;
 import org.msc.web.dev.model.service.update.UpdateServiceResponse;
+import org.msc.web.dev.repository.NotificationRepository;
 import org.msc.web.dev.repository.ServiceRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
@@ -29,6 +30,9 @@ public class UpdateServiceImpl implements IUseCaseImplementation<
 
     @Autowired
     private ServiceRepository serviceRepository;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @PostConstruct
     public void initProp() {
@@ -52,6 +56,7 @@ public class UpdateServiceImpl implements IUseCaseImplementation<
     public WriteResult process(UpdateServiceRequest updateServiceRequest) {
         try {
             ApiFuture<WriteResult> writeResult = serviceRepository.updateService(updateServiceRequest);
+            notificationRepository.createForUpdateInService(updateServiceRequest.getServiceId());
             return writeResult.get();
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to update Service in FireBase "+exception.getMessage());

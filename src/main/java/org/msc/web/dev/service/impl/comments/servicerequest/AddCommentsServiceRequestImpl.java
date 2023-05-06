@@ -10,6 +10,7 @@ import org.msc.web.dev.model.collections.CommentsServiceRequest;
 import org.msc.web.dev.model.comments.servicerequest.add.CommentsServiceRequestAddRequest;
 import org.msc.web.dev.model.comments.servicerequest.add.CommentsServiceRequestAddResponse;
 import org.msc.web.dev.repository.CommentsServiceRequestRepository;
+import org.msc.web.dev.repository.NotificationRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.msc.web.dev.utils.CommonUtils;
@@ -28,6 +29,9 @@ public class AddCommentsServiceRequestImpl implements IUseCaseImplementation<
 
     @Autowired
     private CommentsServiceRequestRepository repository;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @PostConstruct
     public void init() {
@@ -54,6 +58,12 @@ public class AddCommentsServiceRequestImpl implements IUseCaseImplementation<
 
         try {
             ApiFuture<WriteResult> writeResultApiFuture = repository.add(commentsServiceRequest);
+            if (commentsServiceRequestAddRequest.isFromServiceProvider()) {
+                notificationRepository.createForUpdateByServiceProvider(
+                        commentsServiceRequestAddRequest.getServiceRequestId(),
+                        "Comment added by in Service Request - " + commentsServiceRequestAddRequest.getServiceRequestId()
+                );
+            }
             return writeResultApiFuture.get();
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to save CommentsServiceRequest in FireBase "+exception.getMessage());

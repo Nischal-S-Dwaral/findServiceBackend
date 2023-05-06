@@ -8,4 +8,5 @@ public class CommentsServiceRequestAddRequest {
     private String serviceRequestId;
     private String name;
     private String text;
+    private boolean fromServiceProvider;
 }
