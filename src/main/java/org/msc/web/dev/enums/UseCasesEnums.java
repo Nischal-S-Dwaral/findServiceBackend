@@ -18,7 +18,8 @@ public enum UseCasesEnums {
     GET_BY_ID("getByID"),
     GET_SERVICE_PROVIDER_LIST("getServiceProviderList"),
     GET_SERVICE_REQUEST_LIST("getServiceRequestList"),
-    GET_SERVICE_LIST_BY_SERVICE_PROVIDER("getServiceListByServiceProvider");
+    GET_SERVICE_LIST_BY_SERVICE_PROVIDER("getServiceListByServiceProvider"),
+    GET_UNSEEN_NOTIFICATIONS_COUNT("getUnseenNotificationsCount"),;
 
     private final String useCaseName;
     private static final Map<String, UseCasesEnums> stringUseCasesEnumsMap = new HashMap<>();

@@ -1,4 +1,4 @@
-package org.msc.web.dev.model.notification;
+package org.msc.web.dev.model.notification.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

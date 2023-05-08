@@ -3,12 +3,11 @@ package org.msc.web.dev.service.impl.notification;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
-import org.msc.web.dev.constants.NotificationConstants;
 import org.msc.web.dev.enums.ServiceEnum;
 import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.InternalServerError;
 import org.msc.web.dev.model.collections.Notification;
-import org.msc.web.dev.model.notification.get.GetAllNotificationsResponse;
+import org.msc.web.dev.model.notification.get.GetUnseenNotificationsCountResponse;
 import org.msc.web.dev.repository.NotificationRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
@@ -25,8 +24,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @Service
-public class GetAllNotificationsImpl implements IUseCaseImplementation<
-        String, List<Notification>, GetAllNotificationsResponse> {
+public class GetUnseenNotificationsCountImpl implements IUseCaseImplementation<
+        String, List<Notification>, GetUnseenNotificationsCountResponse> {
 
     @Autowired
     private NotificationRepository repository;
@@ -34,7 +33,7 @@ public class GetAllNotificationsImpl implements IUseCaseImplementation<
     @PostConstruct
     public void init() {
         UseCasesAdaptorFactory.registerAdaptor(
-                ServiceEnum.NOTIFICATION, UseCasesEnums.GET_BY_ID, this
+                ServiceEnum.NOTIFICATION, UseCasesEnums.GET_UNSEEN_NOTIFICATIONS_COUNT, this
         );
     }
 
@@ -52,6 +51,7 @@ public class GetAllNotificationsImpl implements IUseCaseImplementation<
 
             return queryDocumentSnapshotList.stream()
                     .map(d -> d.toObject(Notification.class))
+                    .filter(n -> !n.isSeen()) // only include notifications where seen is false
                     .collect(Collectors.toList());
 
         } catch (ExecutionException | InterruptedException exception) {
@@ -60,20 +60,7 @@ public class GetAllNotificationsImpl implements IUseCaseImplementation<
     }
 
     @Override
-    public GetAllNotificationsResponse postProcess(List<Notification> notifications) {
-
-        List<Notification> generalNotifications = notifications.stream()
-                .filter(item -> NotificationConstants.TYPE_GENERAL.equals(item.getType()))
-                .collect(Collectors.toList());
-
-        List<Notification> serviceRequestUpdates = notifications.stream()
-                .filter(item -> NotificationConstants.TYPE_UPDATE_SERVICE_REQUEST.equals(item.getType()))
-                .collect(Collectors.toList());
-
-        List<Notification> reviewRequest = notifications.stream()
-                .filter(item -> NotificationConstants.TYPE_REVIEW.equals(item.getType()))
-                .collect(Collectors.toList());
-
-        return new GetAllNotificationsResponse(serviceRequestUpdates, reviewRequest, generalNotifications);
+    public GetUnseenNotificationsCountResponse postProcess(List<Notification> notifications) {
+        return new GetUnseenNotificationsCountResponse(notifications.size());
     }
 }

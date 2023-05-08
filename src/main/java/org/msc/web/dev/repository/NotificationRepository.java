@@ -115,4 +115,18 @@ public class NotificationRepository {
         CollectionReference databaseReference  = firestore.collection(Constants.NOTIFICATION_COLLECTION);
         return databaseReference.whereEqualTo("customerId", customerId).get();
     }
+
+    public ApiFuture<WriteResult> updateSeenStatus(String notificationId, Map<String, Object> fieldMap) {
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference databaseReference  = firestore.collection(Constants.NOTIFICATION_COLLECTION);
+
+        try {
+            ApiFuture<QuerySnapshot> apiFuture = databaseReference.whereEqualTo("id", notificationId).get();
+            String documentId = apiFuture.get().getDocuments().get(0).getId();
+            return databaseReference.document(documentId).update(fieldMap);
+        } catch (Exception exception) {
+            throw new InternalServerError(exception.getMessage());
+        }
+    }
 }
