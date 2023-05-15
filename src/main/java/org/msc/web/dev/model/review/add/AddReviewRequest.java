@@ -9,4 +9,5 @@ public class AddReviewRequest {
     private String customerName;
     private String rating;
     private String comment;
+    private String notificationId;
 }

@@ -10,6 +10,7 @@ import org.msc.web.dev.model.collections.Review;
 import org.msc.web.dev.model.review.add.AddReviewData;
 import org.msc.web.dev.model.review.add.AddReviewRequest;
 import org.msc.web.dev.model.review.add.AddReviewResponse;
+import org.msc.web.dev.repository.NotificationRepository;
 import org.msc.web.dev.repository.ReviewRepository;
 import org.msc.web.dev.repository.ServiceRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
@@ -21,6 +22,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -31,6 +34,9 @@ public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, A
 
     @Autowired
     private ServiceRepository serviceRepository;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @PostConstruct
     public void init() {
@@ -62,6 +68,13 @@ public class AddReviewImpl implements IUseCaseImplementation<AddReviewRequest, A
             ApiFuture<WriteResult> reviewData = reviewRepository.add(review);
             ApiFuture<WriteResult> updateServiceData =
                     serviceRepository.updateTotalReviewOnAdd(review.getServiceId(), review.getRating());
+
+            Map<String, Object> fieldMap = new HashMap<>();
+            fieldMap.put("seen", true);
+            notificationRepository.updateSeenStatus(
+                    addReviewRequest.getNotificationId(), fieldMap
+            );
+            
             return new AddReviewData(reviewData.get(), updateServiceData.get());
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to save Review in FireBase "+exception.getMessage());

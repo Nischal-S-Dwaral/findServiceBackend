@@ -2,6 +2,7 @@ package org.msc.web.dev.service.impl.comments.servicerequest;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.WriteResult;
+import org.msc.web.dev.constants.ServiceRequestConstants;
 import org.msc.web.dev.enums.ServiceEnum;
 import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.BadRequest;
@@ -11,6 +12,7 @@ import org.msc.web.dev.model.comments.servicerequest.add.CommentsServiceRequestA
 import org.msc.web.dev.model.comments.servicerequest.add.CommentsServiceRequestAddResponse;
 import org.msc.web.dev.repository.CommentsServiceRequestRepository;
 import org.msc.web.dev.repository.NotificationRepository;
+import org.msc.web.dev.repository.ServiceRequestRepository;
 import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.msc.web.dev.utils.CommonUtils;
@@ -21,6 +23,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -32,6 +36,9 @@ public class AddCommentsServiceRequestImpl implements IUseCaseImplementation<
 
     @Autowired
     private NotificationRepository notificationRepository;
+
+    @Autowired
+    private ServiceRequestRepository serviceRequestRepository;
 
     @PostConstruct
     public void init() {
@@ -62,6 +69,13 @@ public class AddCommentsServiceRequestImpl implements IUseCaseImplementation<
                 notificationRepository.createForUpdateByServiceProvider(
                         commentsServiceRequestAddRequest.getServiceRequestId(),
                         "Comment added by in Service Request - " + commentsServiceRequestAddRequest.getServiceRequestId()
+                );
+
+                Map<String, Object> fieldMap = new HashMap<>();
+                fieldMap.put(ServiceRequestConstants.FIELD_STATUS, "Update Required");
+
+                serviceRequestRepository.updateStatus(
+                        commentsServiceRequestAddRequest.getServiceRequestId(), fieldMap
                 );
             }
             return writeResultApiFuture.get();

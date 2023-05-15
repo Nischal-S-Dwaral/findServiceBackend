@@ -96,7 +96,6 @@ public class NotificationRepository {
             notification.setSeen(false);
             notification.setMessage("Review Requested for : "+ serviceRequestId);
             notification.setCustomerId(serviceRequest.getCustomerId());
-            notification.setRedirectUrl("/review/"+serviceRequest.getServiceId());
             notification.setTimestamp(LocalDateTime.now()
                     .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
 
@@ -104,6 +103,7 @@ public class NotificationRepository {
             CollectionReference databaseReference  = firestore.collection(Constants.NOTIFICATION_COLLECTION);
             DocumentReference documentReference = databaseReference.document();
             notification.setId(documentReference.getId());
+            notification.setRedirectUrl("/review/"+serviceRequest.getServiceId()+"?nid="+documentReference.getId());
             documentReference.create(notification);
         } catch (ExecutionException | InterruptedException exception) {
             throw new InternalServerError("Failed to get service request list from FireBase- "+exception.getMessage());
@@ -113,7 +113,8 @@ public class NotificationRepository {
     public ApiFuture<QuerySnapshot> geAllNotifications(String customerId) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.NOTIFICATION_COLLECTION);
-        return databaseReference.whereEqualTo("customerId", customerId).get();
+        return databaseReference.whereEqualTo("customerId", customerId)
+                .orderBy(FieldPath.documentId(), Query.Direction.DESCENDING).get();
     }
 
     public ApiFuture<WriteResult> updateSeenStatus(String notificationId, Map<String, Object> fieldMap) {

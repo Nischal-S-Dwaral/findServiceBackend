@@ -26,6 +26,7 @@ public class CommentsServiceRequestRepository {
     public ApiFuture<QuerySnapshot> getCommentList(String serviceRequestId) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.COMMENTS_SERVICE_REQUEST_COLLECTION);
-        return databaseReference.whereEqualTo("serviceRequestId", serviceRequestId).get();
+        return databaseReference.whereEqualTo("serviceRequestId", serviceRequestId)
+                .orderBy(FieldPath.documentId(), Query.Direction.DESCENDING).get();
     }
 }

@@ -25,7 +25,8 @@ public class ReviewRepository {
     public ApiFuture<QuerySnapshot> getReviewList(String serviceId) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference  = firestore.collection(Constants.REVIEW_COLLECTION);
-        return databaseReference.whereEqualTo("serviceId", serviceId).get();
+        return databaseReference.whereEqualTo("serviceId", serviceId)
+                .orderBy(FieldPath.documentId(), Query.Direction.DESCENDING).get();
     }
 
     public ApiFuture<DocumentSnapshot> findById(String id) {

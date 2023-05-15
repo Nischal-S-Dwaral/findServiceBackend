@@ -57,14 +57,13 @@ public class ServiceProviderRepository {
         CollectionReference databaseReference = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
         return databaseReference
                 .whereGreaterThanOrEqualTo("approvalStatus", status)
-                .whereLessThanOrEqualTo("approvalStatus", status).get();
+                .whereLessThanOrEqualTo("approvalStatus", status)
+                .orderBy(FieldPath.documentId(), Query.Direction.DESCENDING).get();
     }
 
     public ApiFuture<QuerySnapshot> findBySPid(String id) {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference databaseReference = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
         return databaseReference.whereEqualTo("id", id).get();
-
-
     }
 }
