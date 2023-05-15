@@ -57,8 +57,7 @@ public class ServiceProviderRepository {
         CollectionReference databaseReference = firestore.collection(Constants.SERVICE_PROVIDER_COLLECTION);
         return databaseReference
                 .whereGreaterThanOrEqualTo("approvalStatus", status)
-                .whereLessThanOrEqualTo("approvalStatus", status)
-                .orderBy(FieldPath.documentId(), Query.Direction.DESCENDING).get();
+                .whereLessThanOrEqualTo("approvalStatus", status).get();
     }
 
     public ApiFuture<QuerySnapshot> findBySPid(String id) {
