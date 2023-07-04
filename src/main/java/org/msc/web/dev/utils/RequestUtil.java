@@ -7,7 +7,7 @@ import org.msc.web.dev.enums.UseCasesEnums;
 import org.msc.web.dev.exceptions.BadRequest;
 import org.msc.web.dev.exceptions.JsonException;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;

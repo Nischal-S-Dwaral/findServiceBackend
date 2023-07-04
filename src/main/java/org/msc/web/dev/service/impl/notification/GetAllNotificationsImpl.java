@@ -3,6 +3,7 @@ package org.msc.web.dev.service.impl.notification;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
+import jakarta.servlet.http.HttpServletRequest;
 import org.msc.web.dev.constants.NotificationConstants;
 import org.msc.web.dev.enums.ServiceEnum;
 import org.msc.web.dev.enums.UseCasesEnums;
@@ -17,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;

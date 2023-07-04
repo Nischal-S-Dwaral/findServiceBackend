@@ -8,7 +8,7 @@ import org.msc.web.dev.service.IUseCaseImplementation;
 import org.msc.web.dev.service.UseCasesAdaptorFactory;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Objects;
 

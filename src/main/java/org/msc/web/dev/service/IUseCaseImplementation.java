@@ -1,7 +1,7 @@
 package org.msc.web.dev.service;
 
 import org.msc.web.dev.model.RestApiResponse;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public interface IUseCaseImplementation<R, S, T extends RestApiResponse> {
